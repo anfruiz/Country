@@ -31,7 +31,7 @@ public class ApiRest {
     }
 
     @GetMapping(path = "/logs")
-    public ResponseEntity<List<Log>> commandName() {
+    public ResponseEntity<List<Log>> getLogs() {
         return new ResponseEntity<>(logUseCase.getLogs(), HttpStatus.OK);
     }
 }
