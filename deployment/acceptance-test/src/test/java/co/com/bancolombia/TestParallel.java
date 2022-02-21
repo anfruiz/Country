@@ -21,7 +21,7 @@ public class TestParallel {
 
     @Test
     public void testAll() {
-        Results results = Runner.path("classpath:co.com.bancolombia")
+        Results results = Runner.path("classpath:co/com/bancolombia")
                 .outputCucumberJson(true)
                 .tags("~@ignore")
                 .parallel(WORKERS);
@@ -33,7 +33,7 @@ public class TestParallel {
         Collection<File> jsonFiles = FileUtils.listFiles(new File(karateOutputPath), new String[] {"json"}, true);
         List<String> jsonPaths = new ArrayList<>(jsonFiles.size());
         jsonFiles.forEach(file -> jsonPaths.add(file.getAbsolutePath()));
-        Configuration config = new Configuration(new File("target"), "demo");
+        Configuration config = new Configuration(new File("target"), "Country API");
         ReportBuilder reportBuilder = new ReportBuilder(jsonPaths, config);
         reportBuilder.generateReports();
             }

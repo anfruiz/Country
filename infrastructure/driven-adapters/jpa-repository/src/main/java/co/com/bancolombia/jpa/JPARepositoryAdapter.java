@@ -1,21 +1,31 @@
 package co.com.bancolombia.jpa;
 
-import co.com.bancolombia.jpa.helper.AdapterOperations;
-import org.reactivecommons.utils.ObjectMapper;
+import co.com.bancolombia.jpa.entities.LogsEntity;
+import co.com.bancolombia.jpa.mapper.LogMapper;
+import co.com.bancolombia.model.log.Log;
+import co.com.bancolombia.model.log.gateways.LogRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class JPARepositoryAdapter extends AdapterOperations<Object/* change for domain model */, Object/* change for adapter model */, String, JPARepository>
-// implements ModelRepository from domain
-{
+import java.util.List;
+import java.util.Optional;
 
-    public JPARepositoryAdapter(JPARepository repository, ObjectMapper mapper) {
-        /**
-         *  Could be use mapper.mapBuilder if your domain model implement builder pattern
-         *  super(repository, mapper, d -> mapper.mapBuilder(d,ObjectModel.ObjectModelBuilder.class).build());
-         *  Or using mapper.map with the class of the object model
-         */
-        super(repository, mapper, d -> mapper.map(d, Object.class/* change for domain model */));
+@Repository
+public class JPARepositoryAdapter implements LogRepository {
+
+    @Autowired
+    private JPARepository jpaRepository;
+    @Autowired
+    private LogMapper logMapper;
+
+    @Override
+    public void save(Log log) {
+        jpaRepository.save(logMapper.toLogEntity(log));
+    }
+
+    @Override
+    public List<Log> getLogs() {
+        List<LogsEntity> logsEntities = (List<LogsEntity>) jpaRepository.findAll();
+        return logMapper.toLogs(logsEntities);
     }
 }

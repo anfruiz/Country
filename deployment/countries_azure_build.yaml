@@ -13,6 +13,9 @@ variables:
   - name: 'artifactName'
     value: 'countries'
 
+resources:
+  - repo: self
+
 trigger:
   branches:
     include:

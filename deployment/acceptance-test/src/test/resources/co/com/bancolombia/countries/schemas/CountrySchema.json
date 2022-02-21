@@ -1,0 +1,6 @@
+{
+  "countryName": "#string",
+  "population": "#number",
+  "area": "#number",
+  "populationDensity": "#notnull"
+}

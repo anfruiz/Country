@@ -1,7 +1,11 @@
 package co.com.bancolombia.jpa;
 
+import co.com.bancolombia.jpa.entities.LogsEntity;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 
-public interface JPARepository extends CrudRepository<Object/* change for adapter model */, String>, QueryByExampleExecutor<Object/* change for adapter model */> {
+import java.sql.Timestamp;
+import java.time.LocalTime;
+
+public interface JPARepository extends CrudRepository<LogsEntity, Timestamp> {
 }

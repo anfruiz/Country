@@ -1,0 +1,32 @@
+[
+  {
+    "countryName": "Heard Island and McDonald Islands",
+    "population": 0,
+    "area": 412.0,
+    "populationDensity": "Infinity"
+  },
+  {
+    "countryName": "Bouvet Island",
+    "population": 0,
+    "area": 49.0,
+    "populationDensity": "Infinity"
+  },
+  {
+    "countryName": "Antarctica",
+    "population": 1000,
+    "area": 1.4E7,
+    "populationDensity": 14000.0
+  },
+  {
+    "countryName": "South Georgia and the South Sandwich Islands",
+    "population": 30,
+    "area": 3903.0,
+    "populationDensity": 130.1
+  },
+  {
+    "countryName": "Greenland",
+    "population": 56367,
+    "area": 2166086.0,
+    "populationDensity": 38.42826476484468
+  }
+]

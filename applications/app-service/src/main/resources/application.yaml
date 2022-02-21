@@ -12,12 +12,9 @@ spring:
   profiles:
     include: null
   datasource:
-    url: "jdbc:h2:mem:test"
-    username: "sa"
-    password: "pass"
-    driverClassName: "org.h2.Driver"
-  jpa:
-    databasePlatform: "org.hibernate.dialect.H2Dialect"
+    url: "jdbc:postgresql://database-1.cacog5twnmdy.us-east-1.rds.amazonaws.com:5432/countries"
+    username: "postgres"
+    password: "postgres1234"
 adapter:
   restconsumer:
     url: "https://restcountries.com/v3.1/all"
