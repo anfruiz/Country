@@ -63,12 +63,12 @@ jobs:
           summaryFileLocation: '$(System.DefaultWorkingDirectory)/build/reports/jacocoMergedReport/jacocoMergedReport.xml'
 
       - task: PublishBuildArtifacts@1
-          displayName: 'Publish Artifact'
-          inputs:
-            PathtoPublish: '$(System.DefaultWorkingDirectory)/deployment/acceptance-test'
-            ArtifactName: '$(artifactName)'
-            publishLocation: 'Container'
-            condition: false
+        displayName: 'Publish Acceptance Test Artifact'
+        inputs:
+          PathtoPublish: '$(System.DefaultWorkingDirectory)/deployment/acceptance-test'
+          ArtifactName: '$(artifactName) - Acceptance Test'
+          publishLocation: 'Container'
+          condition: false
 
       - task: PublishBuildArtifacts@1
         displayName: 'Publish Artifact'
