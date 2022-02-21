@@ -35,16 +35,6 @@ jobs:
         inputs:
           script: |
             gradle wrapper
-      - task: SonarQubePrepare@4
-        displayName: 'Prepare analysis on SonarQube'
-        inputs:
-          SonarQube: SonarQube
-          scannerMode: Other
-          extraProperties: |
-            sonar.projectKey=$(Build.Repository.Name)
-            sonar.projectName=$(Build.Repository.Name)
-            sonar.project.version=$(Build.BuildNumber)
-            sonar.branch.name=$(Build.SourceBranchName)
 
       - task: Gradle@2
         displayName: 'Gradle build and test'
