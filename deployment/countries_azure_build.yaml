@@ -26,7 +26,7 @@ jobs:
   - job: BuildJob
     displayName: 'Build'
     pool:
-      name: Build
+      name: Azure Pipelines
       demands:
         - java
     steps:
