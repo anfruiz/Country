@@ -6,20 +6,17 @@ import co.com.bancolombia.usecase.log.LogUseCase;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-@ExtendWith({SpringExtension.class})
 @SpringBootTest(classes = {ApiRest.class})
 public class ApiRestTest {
 
@@ -27,10 +24,10 @@ public class ApiRestTest {
     private ApiRest apiRest;
 
     @MockBean
-    CountryUseCase countryUseCase;
+    private CountryUseCase countryUseCase;
 
     @MockBean
-    LogUseCase logUseCase;
+    private LogUseCase logUseCase;
 
     @BeforeEach
     void initializa() {
@@ -41,23 +38,18 @@ public class ApiRestTest {
     }
 
     @Test
-    void getCountriesOK() {
-
-        Mockito.when(countryUseCase.getCountries(ArgumentMatchers.any())).thenReturn(Optional.of(countries));
-
+    void get_countries_with_httpStatus_OK() {
+        Mockito.when(countryUseCase.getCountries(ArgumentMatchers.anyInt())).thenReturn(Optional.of(countries));
         ResponseEntity<List<Country>> httpResponse = apiRest.getCountries(3);
-
         Assertions.assertEquals(httpResponse.getStatusCode(), HttpStatus.OK);
         Assertions.assertEquals(countries, httpResponse.getBody());
 
     }
 
     @Test
-    void getCountriesNOTFOUND() {
-        Mockito.when(countryUseCase.getCountries(ArgumentMatchers.any())).thenReturn(Optional.empty());
-
+    void get_countries_with_httpStatus_NOTFOUND() {
+        Mockito.when(countryUseCase.getCountries(ArgumentMatchers.anyInt())).thenReturn(Optional.empty());
         ResponseEntity<List<Country>> httpResponse = apiRest.getCountries(2);
-
         Assertions.assertEquals(httpResponse.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 }

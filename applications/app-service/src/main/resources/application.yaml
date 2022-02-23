@@ -15,6 +15,8 @@ spring:
     url: "jdbc:postgresql://database-1.cacog5twnmdy.us-east-1.rds.amazonaws.com:5432/countries"
     username: "postgres"
     password: "postgres1234"
+  jpa:
+    show-sql: true
 adapter:
   restconsumer:
     url: "https://restcountries.com/v3.1/all"

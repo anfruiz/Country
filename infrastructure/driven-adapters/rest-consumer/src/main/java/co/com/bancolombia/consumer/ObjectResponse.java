@@ -23,7 +23,7 @@ public class ObjectResponse {
             String name = element.getAsJsonObject().get("name").getAsJsonObject().get("official").getAsString();
             Double area = element.getAsJsonObject().get("area").getAsDouble();
             Integer population = element.getAsJsonObject().get("population").getAsInt();
-            Double populationDensity = area/population;
+            Double populationDensity = population/area;
             countries.add(new Country(name, population, area, populationDensity));
         }
         return countries;
