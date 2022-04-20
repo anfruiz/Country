@@ -6,6 +6,9 @@ buildscript {
 		jacocoVersion = '0.8.5'
         lombokVersion = '1.18.22'
 	}
+    dependencies {
+        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.7.4'
+    }
 }
 
 plugins {
