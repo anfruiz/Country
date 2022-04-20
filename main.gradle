@@ -6,27 +6,27 @@ allprojects {
     }
 }
 
+apply plugin: 'info.solidsoft.pitest.aggregator'
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'jacoco'
     apply plugin: 'io.spring.dependency-management'
-    apply plugin: 'info.solidsoft.pitest'   //'pitest' for plugin versions <1.1.0
 
-    pitest {
-        targetClasses = ['co.com.bancolombia.*']
-        verbose = true
-        outputFormats = ['XML', 'HTML']
-        threads = 8
-        exportLineCoverage = true
-        timestampedReports = false
-        //mutators = ['STRONGER', 'DEFAULTS']
-        fileExtensionsToFilter.addAll('xml', 'orbit')
-        junit5PluginVersion = '0.15'
-        failWhenNoMutations = false
+    if (project.name in ['app-service', 'rest-consumer']) {
+        apply plugin: 'info.solidsoft.pitest'
 
-        if (project.name in ['app-service', 'rest-consumer']) {
-            apply plugin: 'info.solidsoft.pitest.aggregator'
+        pitest {
+            targetClasses = ['co.com.bancolombia.*']
+            verbose = true
+            outputFormats = ['XML', 'HTML']
+            threads = 8
+            exportLineCoverage = true
+            timestampedReports = false
+            //mutators = ['STRONGER', 'DEFAULTS']
+            fileExtensionsToFilter.addAll('xml', 'orbit')
+            junit5PluginVersion = '0.15'
+            failWhenNoMutations = false
         }
     }
 
