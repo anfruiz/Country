@@ -4,11 +4,8 @@ buildscript {
 		springBootVersion = '2.6.2'
 		sonarVersion = '3.0'
 		jacocoVersion = '0.8.5'
-        lombokVersion = '1.18.22'
+		lombokVersion = '1.18.22'
 	}
-    dependencies {
-        classpath 'info.solidsoft.gradle.pitest:gradle-pitest-plugin:1.7.4'
-    }
 }
 
 plugins {
@@ -16,7 +13,9 @@ plugins {
 	id 'org.springframework.boot' version "${springBootVersion}"
 	id 'org.sonarqube' version "${sonarVersion}"
 	id 'jacoco'
+	id 'info.solidsoft.pitest' version '1.7.4' apply false
 }
+
 
 sonarqube {
     def modules = subprojects.projectDir.collect { "${it.toString().replace(project.projectDir.toString() + "/", "")}" }
