@@ -13,7 +13,7 @@ subprojects {
     apply plugin: 'jacoco'
     apply plugin: 'io.spring.dependency-management'
 
-    if (project.name in ['app-service', 'rest-consumer']) {
+    if (project.name != 'model') {
         apply plugin: 'info.solidsoft.pitest'
 
         pitest {
