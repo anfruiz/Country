@@ -59,6 +59,7 @@ public class ApiRestTest {
         Assertions.assertEquals(httpResponse.getStatusCode(), HttpStatus.NOT_FOUND);
     }
 
+    //Test cover no call function
     @Test
     void call_logUseCase_save_when_get_countries() {
         Mockito.doNothing().when(logUseCase).save(ArgumentMatchers.anyInt());
@@ -67,6 +68,7 @@ public class ApiRestTest {
         Mockito.verify(logUseCase, Mockito.times(1)).save(ArgumentMatchers.anyInt());
     }
 
+    //Test NO_COVERAGE Mutation
     @Test
     void get_logs_with_httpStatus_OK() {
         Mockito.when(logUseCase.getLogs()).thenReturn(logs);
